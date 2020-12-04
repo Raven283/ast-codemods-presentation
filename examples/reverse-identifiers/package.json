@@ -1,0 +1,7 @@
+{
+  "name": "reverse-identifiers",
+  "version": "1.0.0",
+  "dependencies": {
+    "jscodeshift": "^0.11.0"
+  }
+}
