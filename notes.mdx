@@ -1,0 +1,97 @@
+# Notes
+
+Abstract syntax trees are used by Flow, Babel, TypeScript (compiler), Prettier and many more
+
+Custom ESLint rules
+
+## Transform
+
+possible examples:
+
+1. remove an import
+2. require -> import
+3. arrow expression to function
+
+```javascript
+let input, output;
+
+// before
+output = [1, 2, 3].map((value) => value * 2);
+
+// after
+output = [1, 2, 3].map(function (value) {
+  return value * 2;
+});
+
+console.log(output);
+```
+
+## JS Codeshift
+
+Jest has Mocha -> Jest codemod's
+
+testing lib
+
+```javascript
+import { someUtil } from "lodash";
+
+[arr, createArr().flat()].flat();
+```
+
+# Compiling
+
+## Steps
+
+Each compiler, no matter what language it is designed for, will follow these steps:
+
+> Code --1-> AST --2-> transform --3-> AST -> code
+
+1. Parse code to AST
+
+2. Transform AST -> AST (add, edit, delete nodes)
+
+3. Generate code from AST
+
+# ESLint
+
+## Examples
+
+### Use await over promises
+
+```javascript
+// INPUT
+async function test() {
+  const data = getData().then((resp) => resp);
+}
+```
+
+```javascript
+// TRANSFORMER
+export default function (context) {
+  return {
+    MemberExpression(node) {
+      if (node.property.name === "then") {
+        context.report({
+          message: "use await over promises",
+          node,
+          loc: node.property.loc,
+        });
+      }
+    },
+  };
+}
+```
+
+```javascript
+// OUTPUT
+
+// use await over promises (at 2:26)
+const data = getData().then((resp) => resp);
+// -------------------------^
+
+// Fixed output follows:
+// --------------------------------------------------------------------------------
+async function test() {
+  const data = getData().then((resp) => resp);
+}
+```
