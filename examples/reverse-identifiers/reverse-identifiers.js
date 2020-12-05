@@ -8,12 +8,13 @@ function transformer(file, api) {
 
   let identifier = nodes.find(j.identifier);
 
-  const replacer = (id => j.identifier(id.name.name.split("").reverse().join("")))
+  const replacer = id =>
+    j.identifier(id.name.name.split("").reverse().join(""));
   identifier = identifier.replaceWith(replacer);
 
   const source = identifier.toSource();
 
   console.log(source);
 
-  return source
+  return source;
 }

@@ -1,0 +1,19 @@
+{
+  "root": true,
+  "parser": "@typescript-eslint/parser",
+  "extends": [
+    "plugin:@typescript-eslint/recommended",
+    "eslint:recommended",
+    "prettier",
+    "prettier/@typescript-eslint", // disable all formatting rules added by @typescript-eslint
+    "prettier/react"
+  ],
+  "env": {
+    "es6": true,
+    "node": true
+  },
+  "rules": {
+    "prettier/prettier": ["error"]
+  },
+  "plugins": ["prettier", "jsdoc"]
+}

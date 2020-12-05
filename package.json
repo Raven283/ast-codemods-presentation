@@ -1,18 +1,37 @@
 {
   "name": "ast-codemods-presentation",
   "version": "1.0.0",
+  "type": "module",
+  "workspaces": [
+    "./examples/*"
+  ],
+  "scripts": {
+    "lint": "npx eslint --ext .js,.ts .",
+    "lint:fix": "npx eslint --fix --ext .js,.ts,.json ."
+  },
   "dependencies": {
+    "eslint-plugin-custom-rules": "file:examples/eslint",
     "jscodeshift": "^0.11.0"
   },
   "devDependencies": {
     "@commitlint/cli": "^11.0.0",
     "@commitlint/config-conventional": "^11.0.0",
+    "@typescript-eslint/eslint-plugin": "^4.9.0",
+    "@typescript-eslint/parser": "^4.9.0",
     "commitizen": "^4.2.2",
     "cz-conventional-changelog": "^3.3.0",
+    "dedent": "^0.7.0",
     "eslint": "^7.14.0",
+    "eslint-ava-rule-tester": "^4.0.0",
+    "eslint-config-prettier": "^6.15.0",
+    "eslint-plugin-jsdoc": "^30.7.8",
+    "eslint-plugin-json": "^2.1.2",
+    "eslint-plugin-prettier": "^3.2.0",
     "husky": "^4.3.0",
     "lint-staged": "^10.5.3",
-    "prettier": "^2.2.1"
+    "mdx-deck": "^4.1.1",
+    "prettier": "^2.2.1",
+    "typescript": "^4.1.2"
   },
   "config": {
     "commitizen": {

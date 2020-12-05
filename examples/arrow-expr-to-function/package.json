@@ -1,12 +1,11 @@
 {
   "name": "arrow-expr-to-function",
   "version": "1.0.0",
+  "type": "module",
   "dependencies": {
     "jscodeshift": "^0.11.0"
   },
-  "devDependencies": {
-
-  },
+  "devDependencies": {},
   "config": {
     "commitizen": {
       "path": "./node_modules/cz-conventional-changelog"

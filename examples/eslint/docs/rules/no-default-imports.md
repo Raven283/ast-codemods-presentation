@@ -1,6 +1,6 @@
-# Custom ESLint rule - disallow unnecessary semicolons
+# ESLint rule no-default-imports
 
-A ESLint rule that enforces the removal of any unnecessary semicolons
+A ESLint rule that disallows the use of default imports
 
 ### The general layout of ESLint rules
 
@@ -19,3 +19,21 @@ A ESLint rule that enforces the removal of any unnecessary semicolons
 ```
 
 Espree parser
+
+## Fail
+
+```ts
+import React from "react";
+
+import React, {ReactHTMLElement} from "react";
+```
+
+## Pass
+
+```ts
+import * as React from "react";
+
+import {ReactHTMLElement} from "react";
+
+import type {ReactHTMLElement} from "react";
+```
